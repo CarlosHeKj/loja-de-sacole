@@ -18,6 +18,8 @@ const descModal = document.getElementById("desc-modal")
 const preçoModalBtn = document.getElementById("preço-modal-btn")
 let count = 0;
 let cart = [];
+let entregas = document.getElementById("entregas");
+let taxaEntrega = 5.00;
 
 cartBtn.addEventListener('click',()=>{
     updateCartModal();
@@ -80,12 +82,15 @@ function updateCartModal(){
     cartCounter.innerHTML = cart.length;
 
 }
+  // Variável para armazenar a mensagem
+let message = "";
 
 entrega.addEventListener("input", () => {
     const filho = document.createElement("div");
 
     // Se o usuário selecionar "entrega"
     if (entrega.value === "entrega") {
+        
         filho.innerHTML = `
             <p class="font-bold mt-4">Endereço de entrega:</p>
             <input type="text" placeholder="Digite seu endereço completo..." id="address" class="w-full border-2 p-1 rounded my-1"/>
@@ -95,6 +100,8 @@ entrega.addEventListener("input", () => {
         // Limpa o conteúdo de res e insere o novo campo de endereço
         res.innerHTML = "";
         res.appendChild(filho);
+        entregas.innerHTML = `<p class=" mt-4">Taxa de Entrega: R$ ${taxaEntrega.toFixed(2)}</p>`
+        console.log("Retirada selecionada");
 
         // Seleciona o input de endereço e o aviso
         const addressInput = document.getElementById("address");
@@ -129,8 +136,46 @@ entrega.addEventListener("input", () => {
             </iframe>
         `;
         res.appendChild(filho);
+        
+        entregas.innerHTML = `<p class=" mt-4">Taxa de Entrega: R$ 0.00</p>`
         console.log("Retirada selecionada");
     }
+});
+function calcularTotalComFrete() {
+    let total = parseFloat(cartTotal.textContent.replace("R$", "").replace(",", "."));
+    if (entrega.value === "entrega") {
+        total += taxaEntrega; // Adiciona o valor da entrega ao total
+    }
+    return total.toFixed(2);
+}
+// Adiciona o evento de clique no botão de checkout
+checkoutBtn.addEventListener("click", () => {
+    const cartItems = cart.map((item) => {
+        return (
+            `${item.name} Quantidade: (${item.quantidade}) Preço: R$ ${item.preço} |`
+        )
+    }).join("");
+
+    if (entrega.value === "entrega") {
+        const addressInput = document.getElementById("address");
+        if (addressInput && addressInput.value.trim() !== "") {
+            const totalComEntrega = calcularTotalComFrete();
+            message = encodeURIComponent(cartItems + " Preço final com entrega: R$ " + totalComEntrega);
+            const phone = "5521974575017";
+            window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
+        } else {
+            // Se o endereço estiver vazio, exiba uma mensagem de erro ou trate o caso
+            alert("Por favor, insira o endereço de entrega.");
+        }
+    } else if (entrega.value === "retirada") {
+        const totalSemEntrega = cartTotal.textContent;
+        message = encodeURIComponent(cartItems + " Preço final: " + totalSemEntrega);
+        const phone = "5521974575017";
+        window.open(`https://wa.me/${phone}?text=${message} retirada no local`, "_blank");
+    }
+
+    // Redefinir a mensagem após o uso
+    message = "";
 });
 
 

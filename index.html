@@ -123,11 +123,12 @@
             <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
             <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
             <div class="flex justify-end">
-                <p>Entrega: <span>0,00</span></p>
+                <p id="entregas" class="mt-4">Taxa de Entrega: R$ 0.00</p>
             </div>
             <div class=" w-[60%] flex gap-2">
             <label for="estado" class="font-bold">Forma de retirada:</label>
 	<select id="entrega" name="entrega" class="border">
+        <option value="Escolha" disabled selected>Escolha</option>
         <option value="retirada">Retirada</option>
 		<option value="entrega">Entrega</option>
 	</select>
