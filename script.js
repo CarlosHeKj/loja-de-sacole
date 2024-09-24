@@ -19,7 +19,7 @@ const preçoModalBtn = document.getElementById("preço-modal-btn")
 let count = 0;
 let cart = [];
 let entregas = document.getElementById("entregas");
-let taxaEntrega = 5.00;
+let taxaEntrega = 3.00;
 
 cartBtn.addEventListener('click',()=>{
     updateCartModal();
@@ -222,6 +222,8 @@ const adicionar = document.getElementById("adicionar");
 adicionar.addEventListener('click',()=>{
     addToCart(tituloModal.textContent,preçoModal.textContent,srcModal.src,qtdModal.textContent);
     updateCartModal();
+    cartModal.style.display = "flex";
+    elementsModal.style.display = "none";
 })
 
 function atualizarPreco() {
