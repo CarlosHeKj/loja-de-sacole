@@ -929,24 +929,24 @@ video {
   height: 100%;
 }
 
-.h-2 {
-  height: 0.5rem;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
-.h-20 {
-  height: 5rem;
-}
-
 .w-28 {
   width: 7rem;
 }
 
 .w-\[100\%\] {
   width: 100%;
+}
+
+.w-\[100px\] {
+  width: 100px;
+}
+
+.w-\[360px\] {
+  width: 360px;
+}
+
+.w-\[400px\] {
+  width: 400px;
 }
 
 .w-\[60\%\] {
@@ -969,36 +969,32 @@ video {
   width: 100%;
 }
 
-.w-\[100px\] {
-  width: 100px;
+.w-\[180px\] {
+  width: 180px;
 }
 
-.w-\[500px\%\] {
-  width: 500px%;
+.w-\[200px\] {
+  width: 200px;
 }
 
-.w-\[500px\] {
-  width: 500px;
+.w-\[230px\] {
+  width: 230px;
 }
 
-.w-\[400px\] {
-  width: 400px;
+.w-\[170px\] {
+  width: 170px;
 }
 
-.w-\[360px\] {
-  width: 360px;
+.w-\[220px\] {
+  width: 220px;
 }
 
-.w-\[40px\] {
-  width: 40px;
+.w-\[240px\] {
+  width: 240px;
 }
 
-.w-\[50px\] {
-  width: 50px;
-}
-
-.w-\[600px\] {
-  width: 600px;
+.w-\[90\%\] {
+  width: 90%;
 }
 
 .min-w-\[90\%\] {
@@ -1007,6 +1003,42 @@ video {
 
 .max-w-7xl {
   max-width: 80rem;
+}
+
+.max-w-\[20px\] {
+  max-width: 20px;
+}
+
+.max-w-\[100px\] {
+  max-width: 100px;
+}
+
+.max-w-\[150px\] {
+  max-width: 150px;
+}
+
+.max-w-\[170px\] {
+  max-width: 170px;
+}
+
+.max-w-\[155px\] {
+  max-width: 155px;
+}
+
+.max-w-\[160px\] {
+  max-width: 160px;
+}
+
+.max-w-\[180px\] {
+  max-width: 180px;
+}
+
+.max-w-\[190px\] {
+  max-width: 190px;
+}
+
+.max-w-\[200px\] {
+  max-width: 200px;
 }
 
 .flex-shrink {
@@ -2003,6 +2035,11 @@ video {
   border-style: none;
 }
 
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
 .bg-\[rgb\(255\2c 0\2c 0\)\] {
   --tw-bg-opacity: 1;
   background-color: rgb(255 0 0 / var(--tw-bg-opacity));
@@ -2840,8 +2877,40 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:w-\[360px\] {
+    width: 360px;
+  }
+
+  .md\:w-\[260px\] {
+    width: 260px;
+  }
+
+  .md\:w-\[160px\] {
+    width: 160px;
+  }
+
+  .md\:w-\[300px\] {
+    width: 300px;
+  }
+
+  .md\:w-\[250px\] {
+    width: 250px;
+  }
+
+  .md\:w-\[150px\] {
+    width: 150px;
+  }
+
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:min-w-\[600px\] {
     min-width: 600px;
+  }
+
+  .md\:max-w-full {
+    max-width: 100%;
   }
 
   .md\:grid-cols-2 {
@@ -2855,6 +2924,17 @@ video {
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-\[360px\] {
+    width: 360px;
   }
 }
 

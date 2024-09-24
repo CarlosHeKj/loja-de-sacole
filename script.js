@@ -67,7 +67,7 @@ function updateCartModal(){
         </div>
         </div>
 
-        <button class="remove-from-cart-btn" data-name="${item.name}">Remover</button>
+        <button class="remove-from-cart-btn bg-red-600 rounded-lg gap-2 p-2 text-white font-bold" data-name="${item.name}">Remover</button>
         </div>`
         total += item.preço * item.quantidade;
         cartItemsContainer.appendChild(cartItemElement);
