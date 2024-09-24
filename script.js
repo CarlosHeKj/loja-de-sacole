@@ -61,7 +61,7 @@ function updateCartModal(){
         <div class="flex flex-row gap-5">
         <img class="w-28 h-28 rounded-md " src="${item.src}" />
         <div class="flex flex-col justify-between">
-        <p class="font-medium">${item.name}</p>
+        <p class="font-medium w-[150px]">${item.name}</p>
         <p>Qtd: ${item.quantidade}</p>
         <p class="font-medium mt-2">R$ ${item.preço.toFixed(2)}</p>
         </div>
