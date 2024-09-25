@@ -157,7 +157,7 @@ checkoutBtn.addEventListener("click", () => {
         
        
     })
-    if(itemsInTheCart > 0){
+    if(itemsInTheCart > 0 && cart.length > 0){
        
     
     const cartItems = cart.map((item) => {
