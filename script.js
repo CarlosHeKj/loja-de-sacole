@@ -20,6 +20,7 @@ let count = 0;
 let cart = [];
 let entregas = document.getElementById("entregas");
 let taxaEntrega = 3.00;
+let itemsInTheCart = 0;
 
 cartBtn.addEventListener('click',()=>{
     updateCartModal();
@@ -89,6 +90,7 @@ entrega.addEventListener("input", () => {
     const filho = document.createElement("div");
 
     // Se o usuário selecionar "entrega"
+   
     if (entrega.value === "entrega") {
         
         filho.innerHTML = `
@@ -101,7 +103,7 @@ entrega.addEventListener("input", () => {
         res.innerHTML = "";
         res.appendChild(filho);
         entregas.innerHTML = `<p class=" mt-4">Taxa de Entrega: R$ ${taxaEntrega.toFixed(2)}</p>`
-        console.log("Retirada selecionada");
+        console.log("Entrega selecionado");
 
         // Seleciona o input de endereço e o aviso
         const addressInput = document.getElementById("address");
@@ -150,22 +152,35 @@ function calcularTotalComFrete() {
 }
 // Adiciona o evento de clique no botão de checkout
 checkoutBtn.addEventListener("click", () => {
+    cart.forEach((item)=>{
+        itemsInTheCart += parseInt(item.quantidade);
+        
+       
+    })
+    if(itemsInTheCart > 0){
+       
+    
     const cartItems = cart.map((item) => {
         return (
             `${item.name} Quantidade: (${item.quantidade}) Preço: R$ ${item.preço} |`
         )
     }).join("");
+    
 
+    
     if (entrega.value === "entrega") {
+        
+   
+    if(itemsInTheCart >= 3){
         const addressInput = document.getElementById("address");
         if (addressInput && addressInput.value.trim() !== "") {
             const totalComEntrega = calcularTotalComFrete();
             message = encodeURIComponent(cartItems + " Preço final com entrega: R$ " + totalComEntrega);
             const phone = "5521974575017";
             window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
-        } else {
-            // Se o endereço estiver vazio, exiba uma mensagem de erro ou trate o caso
-            alert("Por favor, insira o endereço de entrega.");
+            
+        } }else{
+            alert("Entrega disponivel apenas a partir de 3 unidades")
         }
     } else if (entrega.value === "retirada") {
         const totalSemEntrega = cartTotal.textContent;
@@ -176,7 +191,11 @@ checkoutBtn.addEventListener("click", () => {
 
     // Redefinir a mensagem após o uso
     message = "";
+}else{alert("adicione pelo menos um item ao carrinho")
+        
+    }
 });
+
 
 
 const contarMais = document.getElementById("contarMais");
@@ -220,10 +239,12 @@ function createModal(name, preço, src, desc) {
 }
 const adicionar = document.getElementById("adicionar");
 adicionar.addEventListener('click',()=>{
+    
     addToCart(tituloModal.textContent,preçoModal.textContent,srcModal.src,qtdModal.textContent);
     updateCartModal();
     cartModal.style.display = "flex";
     elementsModal.style.display = "none";
+    
 })
 
 function atualizarPreco() {
@@ -262,7 +283,7 @@ function removeItemCart(nome){
        
         
         if(item.quantidade > 1){
-            console.log(item);
+           
         item.quantidade--
         updateCartModal();
         return;
