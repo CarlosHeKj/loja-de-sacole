@@ -230,7 +230,7 @@ contarMenos.addEventListener('click', function() {
 function createModal(name, preço, src, desc) {
     descModal.textContent = desc;          
     tituloModal.textContent = name;       
-    preçoModal.textContent = `${preço}`; 
+    preçoModal.textContent = `${preço.toFixed(2)}`; 
     srcModal.src = src;                   
 
     quantidadeAtual = 1;                   
